@@ -1,0 +1,30 @@
+name: Build and Test (.NET 9)
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Test on .NET 9
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore CleanArchMediatR.Template.sln
+
+      - name: Build solution
+        run: dotnet build CleanArchMediatR.Template.sln --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test CleanArchMediatR.Template.sln --configuration Release --no-build --collect:"XPlat Code Coverage"
