@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "YourName",
+  "classifications": ["WebAPI", "CleanArchitecture", "MediatR"],
+  "identity": "CleanArchMediatR.Template",
+  "name": "Clean Architecture Template with MediatR",
+  "shortName": "cleanarchmediatr",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "CleanArchMediatR.Template",
+  "preferNameDirectory": true
+}

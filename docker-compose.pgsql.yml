@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  cleanarch-api:
+    build:
+      context: .
+      dockerfile: /src/CleanArchMediatR.Template.Api/Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Database__Provider=PostgreSQL
+      - ConnectionStrings__Default=Host=postgres;Port=5432;Database=CleanArchDb;Username=postgres;Password=postgrespw
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: CleanArchDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
