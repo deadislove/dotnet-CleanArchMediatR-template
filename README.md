@@ -1,5 +1,8 @@
 # CleanArchMediatR.Template
 
+![Visitors](https://img.shields.io/badge/visitors-0_total-brightgreen)
+![Clones](https://img.shields.io/badge/clones-0_total_0_unique-blue) <!--CLONE-BADGE-->
+
 ## Description 
 
 A modular .NET template project that implements Clean Architecture and MediatR, designed for scalable, testable, and maintainable enterprise applications. This solution also supports multiple database providers via factory abstraction and integrates JWT-based authentication with clear separation of concerns.
