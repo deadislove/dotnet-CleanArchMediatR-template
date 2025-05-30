@@ -86,3 +86,4 @@ dotnet new cleanarch-mediatr -n YourProjectName
 
 - Author - [Da-Wei Lin](https://www.linkedin.com/in/da-wei-lin-689a35107/)
 - Website - [David Weblog](https://davidskyspace.com/)
+- [MIT LICENSE](https://github.com/deadislove/dotnet-CleanArchMediatR-template/blob/main/LICENSE.md)
