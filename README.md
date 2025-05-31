@@ -7,6 +7,8 @@
 
 A modular .NET template project that implements Clean Architecture and MediatR, designed for scalable, testable, and maintainable enterprise applications. This solution also supports multiple database providers via factory abstraction and integrates JWT-based authentication with clear separation of concerns.
 
+<a href='https://ko-fi.com/F1F82YR41' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 ## 🚀 Features
 
 - ✅ Clean Architecture (Application, Domain, Infra, API, Shared)
