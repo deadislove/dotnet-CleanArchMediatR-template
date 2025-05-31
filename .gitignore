@@ -3,6 +3,9 @@ src/**/bin/
 src/**/obj/
 src/**/logs/
 
+tests/**/bin/
+tests/**/obj/
+
 # Also ignore top-level bin/ and obj/ if any
 /bin/
 /obj/
