@@ -1,4 +1,5 @@
-﻿using CleanArchMediatR.Template.Application.Handlers.Users;
+﻿using CleanArchMediatR.Template.Application.DTOs.Response.Users;
+using CleanArchMediatR.Template.Application.Handlers.Users;
 using CleanArchMediatR.Template.Application.Queries.Users;
 using CleanArchMediatR.Template.Domain.Entities;
 using CleanArchMediatR.Template.Domain.Exceptions;
@@ -22,8 +23,8 @@ namespace CleanArchMediatR.Template.Application.Tests.Handlers.Users
         public async Task Handle_ShouldReturnUser_WhenUserExists()
         {
             // Arrange
-            var userId = Guid.NewGuid();
-            var user = new User
+            Guid userId = Guid.NewGuid();
+            User user = new User
             {
                 id = userId,
                 userName = "user1",
@@ -36,7 +37,7 @@ namespace CleanArchMediatR.Template.Application.Tests.Handlers.Users
             var query = new GetUserQuery(userId.ToString());
 
             // Act
-            var result = await _handler.Handle(query, CancellationToken.None);
+            UserResponseDto result = await _handler.Handle(query, CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);
@@ -49,13 +50,13 @@ namespace CleanArchMediatR.Template.Application.Tests.Handlers.Users
         public async Task Handle_ShouldReturnEmptyUserResponse_WhenUserNotFound()
         {
             // Arrange
-            var userId = Guid.NewGuid().ToString();
+            string userId = Guid.NewGuid().ToString();
             _userService.Setup(s => s.GetByIdAsync(userId)).ReturnsAsync((User?)null);
 
             var query = new GetUserQuery(userId);
 
             // Act
-            var result = await _handler.Handle(query, CancellationToken.None);
+            UserResponseDto result = await _handler.Handle(query, CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);
@@ -66,10 +67,10 @@ namespace CleanArchMediatR.Template.Application.Tests.Handlers.Users
         [Fact]
         public async Task Handle_ShouldThrowDomainException_WhenServiceThrows()
         {
-            var userId = Guid.NewGuid().ToString();
+            string userId = Guid.NewGuid().ToString();
             _userService.Setup(s => s.GetByIdAsync(userId)).ThrowsAsync(new Exception("something went wrong"));
 
-            var query = new GetUserQuery(userId);
+            GetUserQuery query = new GetUserQuery(userId);
 
             await Assert.ThrowsAsync<DomainException>(() => _handler.Handle(query, CancellationToken.None));
         }
