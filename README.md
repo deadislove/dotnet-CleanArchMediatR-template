@@ -1,7 +1,7 @@
 # CleanArchMediatR.Template
 
-![Visitors](https://img.shields.io/badge/visitors-13_total-brightgreen)
-![Clones](https://img.shields.io/badge/clones-17_total_13_unique-blue) <!--CLONE-BADGE-->
+![Visitors](https://img.shields.io/badge/visitors-7_total-brightgreen)
+![Clones](https://img.shields.io/badge/clones-14_total_12_unique-blue) <!--CLONE-BADGE-->
 
 ## Description 
 
