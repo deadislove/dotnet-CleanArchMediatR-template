@@ -23,6 +23,14 @@ A modular .NET template project that implements Clean Architecture and MediatR, 
 - ✅ xUnit Testing for Handlers
 - ✅ Custom Middleware for exceptions and meta-filling
 
+## 📚 Documentation
+
+For more detailed information about the design and usage of this template, please refer to:
+
+- [Architecture Overview](./docs/Architecture.md) - Deep dive into the layers and data flow.
+- [Development Guide](./docs/Development-Guide.md) - How to add new features and handlers.
+- [Database & Migrations](./docs/Database-Migration.md) - Handling multiple DB providers.
+
 ## 🧱 Folder Highlights
 
 | Folder / Project                                    | Description                                                              |
@@ -41,6 +49,9 @@ A modular .NET template project that implements Clean Architecture and MediatR, 
 ```bash
 cd tests/CleanArchMediatR.Template.Application.Tests
 dotnet test
+
+# Show detail infromation.
+dotnet test --logger "console;verbosity=detailed"
 ```
 
 ## 🛠️ How to Run

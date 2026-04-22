@@ -116,17 +116,9 @@ builder.Services.AddRateLimiter(options =>
 
 builder.Services.Configure<Jwt>(builder.Configuration.GetSection("Jwt"));
 
-builder.Services.AddMediatR(cfg =>
+builder.Services.AddMediatR(cfg =>  
 {
     cfg.RegisterServicesFromAssembly(typeof(LoginHandler).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(RegisterHandler).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(RefreshTokenHandler).Assembly);
-    // User
-    cfg.RegisterServicesFromAssembly(typeof(GetAllUsersQueryHandler).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(GetUserQueryHandler).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(CreateUserCommandHandler).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(UpdateUserCommandHandler).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(DeleteUserCommandHandler).Assembly);
 });
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -173,13 +165,13 @@ if (app.Environment.IsDevelopment())
 
 }
 
-app.UseHttpsRedirection();
-
 using (IServiceScope scope = app.Services.CreateScope())
 {
     ApplicationDbContext dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     dbContext.Database.EnsureCreated();
 }
+
+app.UseHttpsRedirection();
 
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
@@ -191,7 +183,6 @@ app.MapHealthChecks("/health", new HealthCheckOptions
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseMiddleware<MetaFillingMiddleware>();
 
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
